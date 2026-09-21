@@ -37,7 +37,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroidInvadersTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    BasicComponentsScreen(
+//                    BasicComponentsScreen(
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+
+                    GameOver(
                         modifier = Modifier.padding(innerPadding)
                     )
 
@@ -120,19 +124,67 @@ fun BasicComponentsScreen (modifier: Modifier = Modifier) {
             contentAlignment = Alignment.BottomCenter){
 
             NaveHero(
-                modifier = Modifier.size(70.dp)
+                modifier = Modifier.padding(bottom = 60.dp).size(100.dp)
 
             )
 
             Text(
                 text = "PRESS START",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.DarkGray)
+                    .padding(10.dp),
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().background(Color.DarkGray)
 
             )
 
         }
+    }
+}
+
+@Composable
+fun GameOver (modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier.fillMaxSize().background(Color.Black)
+    ) {
+        Box(Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center){
+
+            Row(Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically) {
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Green,
+
+                    )
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Red
+                )
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Blue
+                )
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Yellow,
+
+                    )
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Green
+                )
+            }
+
+            Text(
+                text = "GAME OVER",
+                color = Color.White,
+                fontSize = 67.sp
+            )
+        }
+
     }
 }
 
